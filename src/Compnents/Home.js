@@ -55,12 +55,13 @@ class Home extends Component {
     )
 
     handleMore = async () => {
-        this.setState({ isLoading: true, page: this.state.page + 1 })
+        this.setState({ isLoading: true })
         await axios.get(`https://newsapi.org/v2/everything?pageSize=5&q=india&page=${this.state.page}&sortBy=popularity&from=${this.state.dateFrom.toJSON().slice(0, 10)}&to=${this.state.dateTo.toJSON().slice(0, 10)}&apiKey=${API_KEY}`)
             .then(
                 response => this.setState({
                     news: this.state.news.concat(response.data.articles),
-                    isLoading: false
+                    isLoading: false,
+                    page: this.state.page + 1
                 },
                     () => this.getData().then(res => this.storeData(res.concat(response.data.articles)), () => console.log(this.getData()))
                 )
@@ -110,7 +111,7 @@ class Home extends Component {
         //this.setState({ page: 1 })
         //this.getData().then(res => this.setState({ news: res }))
         await axios.get(`https://newsapi.org/v2/everything?pageSize=5&q=india&page=1&sortBy=popularity&from=${this.state.dateFrom.toJSON().slice(0, 10)}&to=${this.state.dateTo.toJSON().slice(0, 10)}&apiKey=${API_KEY}`).then(
-            response => this.setState({ news: response.data.articles,page: 1 },
+            response => this.setState({ news: response.data.articles,page: 2 },
                 //() => console.log(response.data.articles),
                 () => this.storeData(response.data.articles)
             )
@@ -193,7 +194,7 @@ class Home extends Component {
                             onPress={() => this.setState({ webView: "" })}
                         >
                             
-                            <Text style={{ fontSize: 35, paddingLeft: 10,fontWeight:"bold",marginTop:-10}}>{"⬅"}</Text>
+                            <Text style={{ fontSize: 35, paddingLeft: 10,fontWeight:"bold",marginTop:-8}}>{"⬅"}</Text>
                             <Text/>
                         
                             
