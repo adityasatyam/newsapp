@@ -188,17 +188,21 @@ class Home extends Component {
                     </View>
                     :
                     <View style={{ height: Dimensions.get('window').height }}>
-                        <View>
-                        <TouchableOpacity style={{  backgroundColor: "white",height:30,width:60}}
+                        
+                        <TouchableOpacity style={{  backgroundColor: "white",width:60,alignItems:"center",justifyContent:"flex-start",height:40}}
                             onPress={() => this.setState({ webView: "" })}
                         >
-                            <Text style={{ fontSize: 35, paddingLeft: 10,fontWeight:"bold",position:"absolute",top:-15}}>{"←"}</Text>
+                            
+                            <Text style={{ fontSize: 35, paddingLeft: 10,fontWeight:"bold",marginTop:-10}}>{"⬅"}</Text>
+                            <Text/>
+                        
                             
                         </TouchableOpacity>
-                        </View>
+                        
                         <WebView
                             source={{ uri: this.state.webView }}
-                            style={{ marginTop: 0 }}
+                            style={{ 
+                            }}
 
                         />
                     </View>
